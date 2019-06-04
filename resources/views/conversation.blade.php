@@ -82,8 +82,9 @@
                         }
                     },
                     listen: function(){
-                        window.Echo.private('private-Chat.' + this.partner.id)
-                        .listen('NewMessage', (message) => {
+                        var channelName = 'Chat.' + this.partner.id;
+                        window.Echo.private(channelName)
+                        .on("App\\Events\\NewMessage", (message) => {
                             this.messages.push(message.message);
                             setTimeout(function(){
                                 // Scroll to bottom
@@ -96,8 +97,7 @@
                                 });
                             }, 100);
                         });
-
-                        window.Echo.private('private-Chat.' + this.partner.id)
+                        window.Echo.private('Chat.' + this.partner.id)
                         .listen('SeenMessages', (seen) => {
                             if(seen.status === 'seen'){
                                 var lastMsg = this.messages[this.messages.length - 1];

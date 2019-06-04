@@ -35,7 +35,7 @@ class NewComment implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('private-Tweet.' . $this->comment->tweet->id);
+        return new PrivateChannel('Tweet.' . $this->comment->tweet->id);
     }
 
     public function broadcastWith()

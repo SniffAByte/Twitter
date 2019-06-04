@@ -16,10 +16,10 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
-Broadcast::channel('private-Tweet.{id}', function ($user, $comment) {
+Broadcast::channel('Tweet.{id}', function ($user, $comment) {
     return Auth::check();
 });
 
-Broadcast::channel('private-Chat.{id}', function ($user, $chat) {
+Broadcast::channel('Chat.{id}', function ($user, $chat) {
     return Auth::check();
 });

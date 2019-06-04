@@ -27,7 +27,7 @@ class SeenMessages implements ShouldBroadcastNow
     public function __construct(int $id)
     {
         $this->user = new UserResource(\App\User::find($id));
-        \App\Message::where('receiver_id', $id)->where('sender_id', Auth::id())->where('seen', '0')->update(['seen' => '1']);
+        \App\Message::where('receiver_id', Auth::id())->where('sender_id', $id)->where('seen', '0')->update(['seen' => '1']);
     }
 
     /**
@@ -37,7 +37,7 @@ class SeenMessages implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('private-Chat.' . Auth::id());
+        return new PrivateChannel('Chat.' . Auth::id());
     }
 
     public function broadcastWith()

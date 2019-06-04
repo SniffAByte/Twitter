@@ -74,7 +74,11 @@ class MessagesController extends Controller
         $user = User::where('username', $username)->firstOrFail();
 
         // Make messages seen
-        Message::where('sender_id', $user->id)->where('receiver_id', Auth::id())->update(['seen' => 1]);
+        Message::where([
+            ['sender_id', '=', $user->id],
+            ['receiver_id', '=', Auth::id()]
+            ])->update(['seen' => 1]);
+            
         // Push a notification so if he's online
         event(New \App\Events\SeenMessages($user->id));
 
@@ -121,5 +125,10 @@ class MessagesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function IveSeenThis($id)
+    {
+        event(New \App\Events\SeenMessages($id));
     }
 }

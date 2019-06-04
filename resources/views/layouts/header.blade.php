@@ -36,4 +36,4 @@
         AUTH_ID = '{{Auth::check() ? Auth::id(): null}}';
     </script>
 </head>
-<body>
+<body style="@yield('body_style')">

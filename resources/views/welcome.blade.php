@@ -5,7 +5,7 @@
 @section('styles')
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
 @endsection
-
+@section('body_style', 'padding-bottom: 0 !important;')
 @section('content')
     <div class="row">
 

@@ -991,13 +991,14 @@ if (token) {
 }
 
 
+
 window.Pusher = __webpack_require__(46);
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
     broadcaster: 'pusher',
-    key: '5137d3ce1d65cc43d0f0',
-    cluster: 'ap1',
-    encrypted: true
+    key: 'key',
+    cluster: 'cluster',
+    encrypted: false
 });
 
 /***/ }),

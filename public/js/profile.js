@@ -36,7 +36,7 @@ $(document).ready(function(){
                 }).then(resp => {
                     if(resp.data.status === 'success'){
                         let source_url = APP_URL + "/storage/" + folder + '/' + resp.data.image;
-                        $("#" + elementId).html('').css({"background": "url('" + source_url + "')"});
+                        $("#" + elementId).css({"background": "url('" + source_url + "')"}).find("i").remove();
                     }
                 }).catch(error => {
                     showAlert('Sorry we couldn\'t upload your picture. check if you are uploading a valid image and try again. <small>images must be only jpg, or png</small>');
@@ -45,7 +45,7 @@ $(document).ready(function(){
             removePic: function(to, elementId){
                 axios.post(APP_URL + '/' + to).then(resp => {
                     if(resp.data.status === 'success'){
-                        $('#' + elementId).css({"background": "#1DA1F2"})
+                        $('#' + elementId).css({"background": "#1DA1F2"}).append('<i class="fa fa-camera"></i>');
                     }
                 }).catch(error => {
                     showAlert('Sorry we couldn\'t upload your picture. check if you are uploading a valid image and try again. <small>images must be only jpg, or png</small>');

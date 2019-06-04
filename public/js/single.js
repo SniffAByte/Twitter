@@ -219,7 +219,7 @@ $(document).ready(function(){
                 return curr_month + ' ' + curr_date;
             },
             listen(){
-                window.Echo.private('private-Tweet.' + TWEET_ID)
+                window.Echo.private('Tweet.' + TWEET_ID)
                 .listen('NewComment', (comment) => {
                     this.comments = this.comments.concat(comment);
                 });

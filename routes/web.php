@@ -36,9 +36,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/messages/{id}/partner', 'MessagesController@partner');
 
     Route::get('/messages/{username}', 'MessagesController@show')->name('messages.show');
-    Route::post('/IveSeenTheMessage/{id}', function($id){
-        event(New \App\Events\SeenMessages($id));
-    });
+    Route::post('/IveSeenTheMessage/{id}', 'MessagesController@IveSeenThis');
 
     Route::post('/newmessage', 'MessagesController@store');
 

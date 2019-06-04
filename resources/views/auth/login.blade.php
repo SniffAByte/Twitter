@@ -28,7 +28,7 @@
             <div class="card">
                 <form action="{{url('/login')}}" method="POST" class="card-body">
                     <h3>Log in to Twitter</h3>
-                    <input type="email" name="email" value="{{old('email')}}" placeholder="Phone, email or username">
+                    <input type="text" name="email" value="{{old('email')}}" placeholder="Phone, email or username">
                     <input type="password" name="password" value="{{old('password')}}" placeholder="Password">
                     {{csrf_field()}}
                     <input type="submit" value="Log in">

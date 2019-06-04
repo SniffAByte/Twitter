@@ -10,7 +10,7 @@
     @include('layouts.navbar')
     <div class="container">
         <div class="row">
-            <div class="messengers col-lg-8 offset-lg-2" v-if="messages.length > 0">
+            <div class="messengers col-lg-8 offset-lg-2" v-if="Object.keys(messages).length > 0">
                 <a v-for="message in messages" class="single" :id="message.id" :href="'{{route('messages.show', '/')}}/' + message.sender.username">
                     <img :src="'{{asset('/storage/photos/')}}/' + message.sender.photo">
                     <span class="name" v-text="message.sender.name"></span>
@@ -33,7 +33,7 @@
                 el: '#app',
                 data: function(){
                     return {
-                        messages: {!!$messages->toJson()!!},
+                        messages: {!! $messages->toJson() !!},
                         canloadmore: true
                     };
                 },
